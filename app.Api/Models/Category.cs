@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace app.Api.Models
 {
+    [Table("Categories")]
     public class Category
     {
         [Key]
