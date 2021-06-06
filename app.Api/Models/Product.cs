@@ -15,10 +15,10 @@ namespace app.Api.Models
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Este campo é obrigatório")]
-        [Range(1, int.MaxValue, ErrorMessage = "Categoria Inválida")]
+        [Range(1, int.MaxValue, ErrorMessage = "Preço Inválido")]
         public decimal Price { get; set; }
 
-
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
     }
 }
