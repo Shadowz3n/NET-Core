@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using app.Api.Models;
+using app.Api.Domain.Entities;
 
 namespace app.Api.Data
 {
-    public partial class DataContext : DbContext
+    public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options) :base(options)
         {

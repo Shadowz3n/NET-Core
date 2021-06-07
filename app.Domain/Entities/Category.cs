@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace app.Api.Models
+namespace app.Api.Domain.Entities
 {
     [Table("Categories")]
     public class Category

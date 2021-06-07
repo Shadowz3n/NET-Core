@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using app.Api.Data;
-using app.Api.Models;
+using app.Api.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +9,6 @@ using app.Api.Service;
 
 namespace app.Api.Controllers
 {
-
     [ApiController]
     [Route("v1/users")]
     public class UserController : ControllerBase

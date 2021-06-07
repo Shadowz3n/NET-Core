@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using app.Api.Data;
-using app.Api.Models;
+using app.Api.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace app.Api.Controllers
 {
-
     [ApiController]
     [Route("v1/categories")]
     public class CategoryController : ControllerBase
@@ -25,11 +24,8 @@ namespace app.Api.Controllers
         [Route("")]
         public async Task<ActionResult<Category>> Post([FromServices] DataContext context, [FromBody]Category category)
         {
-
             if(!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
             context.Categories.Add(category);
             await context.SaveChangesAsync();

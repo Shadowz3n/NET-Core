@@ -2,13 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using app.Api.Data;
-using app.Api.Models;
+using app.Api.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace app.Api.Controllers
 {
-
     [ApiController]
     [Route("v1/products")]
     public class ProductController : ControllerBase
@@ -42,11 +41,8 @@ namespace app.Api.Controllers
         [Route("")]
         public async Task<ActionResult<Product>> Post([FromServices] DataContext context, [FromBody]Product product)
         {
-
             if(!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
             context.Products.Add(product);
             await context.SaveChangesAsync();
