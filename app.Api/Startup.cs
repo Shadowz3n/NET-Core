@@ -43,7 +43,7 @@ namespace app.Api
                 };
             });
 
-            services.AddDbContext<DataContext>(opt => opt.EnableSensitiveDataLogging().UseSqlServer(Configuration.GetConnectionString("AppDev")));
+            services.AddDbContext<DataContext>(opt => opt.EnableSensitiveDataLogging().UseInMemoryDatabase("AppDev"));
             services.AddScoped<DataContext, DataContext>();
             services.AddSwaggerGen(c =>
             {
