@@ -10,6 +10,7 @@ namespace app.Api.Domain.Entities
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Este campo é obrigatório")]
+        [Column("Title")]
         public string Title { get; set; }
     }
 }
