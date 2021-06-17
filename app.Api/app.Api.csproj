@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.6" />
@@ -13,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\app.Domain\app.Domain.csproj" />
-    <ProjectReference Include="..\app.Shared\app.Shared.csproj" />
     <ProjectReference Include="..\app.Infra\app.Infra.csproj" />
   </ItemGroup>
 

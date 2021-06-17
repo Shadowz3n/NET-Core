@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -25,5 +26,9 @@ namespace app.Api.Domain.Entities
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public DateTime DeletedAt { get; set; }
     }
 }

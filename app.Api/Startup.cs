@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
+using MediatR;
 
 namespace app.Api
 {
@@ -26,16 +28,18 @@ namespace app.Api
         {
             services.AddCors();
             services.AddControllers();
+            services.AddMediatR(typeof(Startup));
             var key = Encoding.ASCII.GetBytes(Configuration.GetValue<string>("App:Key"));
-            services.AddAuthentication(x => 
+            services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(x => 
+            }).AddJwtBearer(x =>
             {
                 x.RequireHttpsMetadata = false;
                 x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters{
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,

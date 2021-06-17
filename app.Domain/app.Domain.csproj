@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\app.Shared\app.Shared.csproj" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
   </ItemGroup>
 
   <PropertyGroup>

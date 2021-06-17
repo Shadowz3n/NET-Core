@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MediatR;
 using System.Linq;
 using System.Threading.Tasks;
 using app.Api.Data;
@@ -12,7 +13,7 @@ namespace app.Api.Controllers
     [Route("v1/products")]
     public class ProductController : ControllerBase
     {
-        
+
         [HttpGet]
         [Route("")]
         public async Task<ActionResult<List<Product>>> Get([FromServices] DataContext context)
@@ -39,9 +40,9 @@ namespace app.Api.Controllers
 
         [HttpPost]
         [Route("")]
-        public async Task<ActionResult<Product>> Post([FromServices] DataContext context, [FromBody]Product product)
+        public async Task<ActionResult<Product>> Post([FromServices] DataContext context, [FromBody] Product product)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             context.Products.Add(product);

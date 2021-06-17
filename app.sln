@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app.Domain", "app.Domain\ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app.Infra", "app.Infra\app.Infra.csproj", "{3AA1B3DC-1E9F-40AB-86E1-11F3C49785D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app.Shared", "app.Shared\app.Shared.csproj", "{92F0F006-4512-40A0-B1D2-CE4D9DB52511}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
