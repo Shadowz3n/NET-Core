@@ -6,6 +6,7 @@ using app.Api.Data;
 using app.Api.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using app.Domain.Commands.Requests;
 
 namespace app.Api.Controllers
 {
@@ -14,40 +15,32 @@ namespace app.Api.Controllers
     public class ProductController : ControllerBase
     {
 
-        [HttpGet]
-        [Route("")]
-        public async Task<ActionResult<List<Product>>> Get([FromServices] DataContext context)
+        [HttpGet("")]
+        public async Task<IActionResult> Get([FromServices] DataContext context)
         {
             var products = await context.Products.ToListAsync();
-            return products;
+            return Ok(products);
         }
 
-        [HttpGet]
-        [Route("{id:int}")]
-        public async Task<ActionResult<Product>> Get([FromServices] DataContext context, int id)
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> Get([FromServices] DataContext context, int id)
         {
             var product = await context.Products.Include(x => x.Category).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
-            return product;
+            return Ok(product);
         }
 
-        [HttpGet]
-        [Route("categories/{id:int}")]
-        public async Task<ActionResult<List<Product>>> GetByCategory([FromServices] DataContext context, int id)
+        [HttpGet("categories/{id:int}")]
+        public async Task<IActionResult> GetByCategory([FromServices] DataContext context, int id)
         {
             var product = await context.Products.Include(x => x.Category).AsNoTracking().Where(x => x.Category.Id == id).ToListAsync();
-            return product;
+            return Ok(product);
         }
 
-        [HttpPost]
-        [Route("")]
-        public async Task<ActionResult<Product>> Post([FromServices] DataContext context, [FromBody] Product product)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        [HttpPost("")]
+        public async Task<IActionResult> Post([FromServices] DataContext context, [FromServices] IMediator mediator, [FromBody] CreateProductRequest command) => Ok(await mediator.Send(command));
 
-            context.Products.Add(product);
-            await context.SaveChangesAsync();
-            return product;
-        }
+        // context.Products.Add(product);
+        // await context.SaveChangesAsync();
+        // return product;
     }
 }

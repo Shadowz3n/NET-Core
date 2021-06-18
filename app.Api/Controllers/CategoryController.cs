@@ -11,20 +11,18 @@ namespace app.Api.Controllers
     [Route("v1/categories")]
     public class CategoryController : ControllerBase
     {
-        
-        [HttpGet]
-        [Route("")]
+
+        [HttpGet("")]
         public async Task<ActionResult<List<Category>>> Get([FromServices] DataContext context)
         {
             var categories = await context.Categories.ToListAsync();
             return categories;
         }
 
-        [HttpPost]
-        [Route("")]
-        public async Task<ActionResult<Category>> Post([FromServices] DataContext context, [FromBody]Category category)
+        [HttpPost("")]
+        public async Task<ActionResult<Category>> Post([FromServices] DataContext context, [FromBody] Category category)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             context.Categories.Add(category);

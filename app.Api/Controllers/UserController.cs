@@ -10,6 +10,7 @@ using app.Api.Service;
 namespace app.Api.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("v1/users")]
     public class UserController : ControllerBase
     {
@@ -20,21 +21,20 @@ namespace app.Api.Controllers
             _tokenService = new TokenService();
         }
 
-        [HttpGet]
-        [Route("login")]
+        [HttpGet("login")]
         [AllowAnonymous]
-        public async Task<ActionResult<dynamic>> Authenticate([FromServices] DataContext context, [FromBody] User user)
+        public async Task<IActionResult> Authenticate([FromServices] DataContext context, [FromBody] User user)
         {
             var userDb = await context.Users.Where(x => x.Email == user.Email && x.Password == user.Password).FirstOrDefaultAsync();
-            if(userDb == null)
+            if (userDb == null)
                 return NotFound(new { Message = "Usuário ou senha inválidos" });
 
             var token = _tokenService.GenerateToken(user);
-            return new
+            return Ok(new
             {
                 user = user,
                 token = token
-            };
+            });
         }
     }
 }

@@ -28,7 +28,7 @@ namespace app.Api
         {
             services.AddCors();
             services.AddControllers();
-            services.AddMediatR(typeof(Startup));
+            services.AddMediatR(typeof(Startup).Assembly);
             var key = Encoding.ASCII.GetBytes(Configuration.GetValue<string>("App:Key"));
             services.AddAuthentication(x =>
             {
