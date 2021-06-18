@@ -10,9 +10,6 @@ namespace app.Api.Controllers
     public class CustomerController : ControllerBase
     {
         [HttpPost("")]
-        public Task<CreateCustomerResponse> Create([FromServices] IMediator mediator, [FromBody] CreateCustomerRequest command)
-        {
-            return mediator.Send(command);
-        }
+        public Task<CreateCustomerResponse> Create([FromServices] IMediator mediator, [FromBody] CreateCustomerRequest command) => mediator.Send(command);
     }
 }

@@ -6,7 +6,7 @@ using app.Api.Domain.Entities;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 
-namespace app.Api.Service 
+namespace app.Api.Service
 {
     public class TokenService
     {
@@ -25,7 +25,7 @@ namespace app.Api.Service
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration.GetValue<string>("App:Key"));
-            var tokenDescriptor = new SecurityTokenDescriptor 
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {

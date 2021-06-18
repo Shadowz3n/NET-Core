@@ -1,9 +1,7 @@
-using System.Collections.Generic;
 using MediatR;
 using System.Linq;
 using System.Threading.Tasks;
 using app.Api.Data;
-using app.Api.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using app.Domain.Commands.Requests;

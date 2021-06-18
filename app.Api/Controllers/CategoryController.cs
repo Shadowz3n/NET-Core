@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using app.Api.Data;
 using app.Api.Domain.Entities;
@@ -13,21 +12,21 @@ namespace app.Api.Controllers
     {
 
         [HttpGet("")]
-        public async Task<ActionResult<List<Category>>> Get([FromServices] DataContext context)
+        public async Task<IActionResult> Get([FromServices] DataContext context)
         {
             var categories = await context.Categories.ToListAsync();
-            return categories;
+            return Ok(categories);
         }
 
         [HttpPost("")]
-        public async Task<ActionResult<Category>> Post([FromServices] DataContext context, [FromBody] Category category)
+        public async Task<IActionResult> Post([FromServices] DataContext context, [FromBody] Category category)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             context.Categories.Add(category);
             await context.SaveChangesAsync();
-            return category;
+            return Ok(category);
         }
     }
 }
