@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using app.Api.Data;
+using app.Infra.Data;
 using app.Api.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

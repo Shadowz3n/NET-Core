@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using app.Api.Domain.Entities;
 
-namespace app.Api.Data
+namespace app.Infra.Data
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) :base(options)
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
 

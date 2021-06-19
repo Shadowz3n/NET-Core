@@ -6,7 +6,7 @@ using app.Api.Domain.Entities;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 
-namespace app.Api.Service
+namespace app.Api.Identity
 {
     public class TokenService
     {

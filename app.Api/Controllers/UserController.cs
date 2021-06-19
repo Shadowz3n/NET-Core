@@ -1,11 +1,11 @@
 using System.Linq;
 using System.Threading.Tasks;
-using app.Api.Data;
+using app.Infra.Data;
 using app.Api.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using app.Api.Service;
+using app.Api.Identity;
 
 namespace app.Api.Controllers
 {
